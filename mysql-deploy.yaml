@@ -3,7 +3,7 @@
   become: yes
   vars:
     my_sql_pass: ExpenseApp@1
-    my_sql_host: 34.239.104.189
+    my_sql_host: 3.82.190.188
   tasks:
   - name: Installing mysql on DB-server instance
     ansible.builtin.package:
@@ -14,14 +14,11 @@
       name: mysqld
       state: started
       enabled: yes
-  - name: change root password for mysql
-    ansible.builtin.command: mysql_secure_installation --set-root-pass "{{my_sql_pass}}"
-
   - name: installing pymysql 
     ansible.builtin.pip:
       name:
       - pymysql
-      executable: pip3.9
+      executable: pip3.9  
   - name: connect to mysql
     community.mysql.mysql_info:
       login_user: root
@@ -32,3 +29,6 @@
   - name: printing mysql login info
     ansible.builtin.debug:
       msg: "{{mysql_info}}"
+  - name: Setup mysql root password
+    ansible.builtin.command: "mysql_secure_installation --set-root-pass ExpenseApp@1"
+    when: mysql_info.failed is true
