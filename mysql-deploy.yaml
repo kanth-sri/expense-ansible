@@ -3,6 +3,7 @@
   become: yes
   vars:
     my_sql_pass: "ExpenseApp@1"
+    my_sql_host: 34.239.104.189
   tasks:
   - name: Installing mysql on DB-server instance
     ansible.builtin.package:
@@ -21,3 +22,12 @@
       name:
       - pymysql
       executable: pip3.9
+  - name: connect to mysql
+    community.mysql.mysql_db:
+      login_user: root
+      login_password: "{{my_sql_pass}}"
+      login_host: "{{my_sql_host}}"
+      register: mysql_info
+  - name: printing mysql login info
+    ansible.builtin.debug:
+      msg: "{{mysql_info}}"
