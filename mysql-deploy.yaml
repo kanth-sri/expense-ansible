@@ -2,7 +2,7 @@
   hosts: DB
   become: yes
   vars:
-    my_sql_pass: "ExpenseApp@1"
+    my_sql_pass: ExpenseApp@1
     my_sql_host: 34.239.104.189
   tasks:
   - name: Installing mysql on DB-server instance
