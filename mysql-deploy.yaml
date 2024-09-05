@@ -23,12 +23,12 @@
       - pymysql
       executable: pip3.9
   - name: connect to mysql
-    community.mysql.mysql_db:
+    community.mysql.mysql_info:
       login_user: root
       login_password: "{{my_sql_pass}}"
       login_host: "{{my_sql_host}}"
-      ignore_errors: true
-      register: mysql_info
+    ignore_errors: true
+    register: mysql_info
   - name: printing mysql login info
     ansible.builtin.debug:
       msg: "{{mysql_info}}"
