@@ -18,6 +18,7 @@
     ansible.builtin.pip:
       name:
       - pymysql
+      - cryptography
       executable: pip3.9  
   - name: connect to mysql
     community.mysql.mysql_info:
