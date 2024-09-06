@@ -3,7 +3,7 @@
   become: yes
   vars:
     my_sql_pass: ExpenseApp@1
-    my_sql_host: 3.82.190.188
+    my_sql_host: 35.173.134.150
   tasks:
   - name: Installing mysql on DB-server instance
     ansible.builtin.package:
