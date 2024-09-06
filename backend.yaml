@@ -1,0 +1,17 @@
+- name: Configuring backend server
+  hosts: all
+  become: yes
+  vars:
+    my_sql_pass: ExpenseApp@1
+    my_sql_host: 35.173.134.150
+  tasks:
+  - name: diable nodejs
+    ansible.builtin.command: "dnf module disable nodejs -y"
+
+  - name: enable nodejs:20 version
+    ansible.buitin.command: "dnf module enable nodejs:20 -y"
+
+  - name: installing nodejs:20
+    ansible.builtin.package:
+      name: nodejs
+      state: present
