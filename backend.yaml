@@ -1,5 +1,5 @@
 - name: Configuring backend server
-  hosts: all
+  hosts: backend
   become: yes
   vars:
     my_sql_pass: ExpenseApp@1
