@@ -52,6 +52,10 @@
       - PyMySQL
       - cryptography
       executable: pip3.9
+  - name: installing mysql
+    ansible.builtin.package:
+      name: mysql
+      state: present
 
   - name: import mysql data
     community.mysql.mysql_db:
